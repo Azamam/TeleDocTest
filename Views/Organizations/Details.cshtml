@@ -1,0 +1,49 @@
+﻿@model TeleDocTest.Models.Organization
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Организация</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Founders)
+        </dt>
+
+        <dd>
+            @foreach (var founder in Model.Founders)
+            {
+                <p>
+                    @Html.DisplayFor(founderItem => founder.Founder.LastName)
+                    @Html.DisplayFor(founderItem => founder.Founder.FirstName)
+                    @Html.DisplayFor(founderItem => founder.Founder.MiddleName)
+                    [ID:@Html.DisplayFor(founderItem => founder.Founder.Id)]
+                </p>
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
